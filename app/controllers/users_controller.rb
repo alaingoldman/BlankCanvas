@@ -22,6 +22,28 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(permit_params)
+      flash[:success] = "Updated"
+      redirect_to user_path(@user)
+    else
+      flash[:danger] = @user.errors.full_messages.first
+      redirect_to edit_user_path(@user)
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.delete
+    flash[:success] = "User Removed"
+    redirect_to root_url
+  end
+
   private
     def permit_params
     	params.require(:user).permit(:username,:password,:email)
