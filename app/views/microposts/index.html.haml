@@ -1,0 +1,6 @@
+%h1 All Tweets
+%hr
+- @microposts.each do |x| 
+  = x.message 
+  = link_to "show", micropost_path(x)
+  %br

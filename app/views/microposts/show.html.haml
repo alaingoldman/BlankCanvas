@@ -1,0 +1,8 @@
+%h3
+  = @micropost.message
+%hr
+%b Created by
+= @micropost.email
+%b on
+= @micropost.created_at.to_date.to_formatted_s(:long_ordinal)
+%br 

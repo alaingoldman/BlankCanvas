@@ -1,0 +1,9 @@
+%h3 all users
+%p (index.haml duh)
+- @users.each do |x|
+  %div
+    %b 
+      = x.username
+    
+    = x.email
+    = link_to "Show", user_path(x)

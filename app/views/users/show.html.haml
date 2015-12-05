@@ -1,0 +1,10 @@
+%h1 Users show
+username: 
+= @user.username
+%br
+
+email: 
+= @user.email
+
+%br 
+= @user.created_at.to_date.to_formatted_s(:long_ordinal)
