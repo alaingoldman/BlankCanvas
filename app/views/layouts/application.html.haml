@@ -7,10 +7,8 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    / Navigation
     %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
       .container
-        / Brand and toggle get grouped for better mobile display
         .navbar-header
           %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
             %span.sr-only Toggle navigation
@@ -18,22 +16,24 @@
             %span.icon-bar
             %span.icon-bar
           = link_to "Home", root_url, class: "navbar-brand"
-        / Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li
               = link_to "About", about_path
             %li 
               = link_to "All Tweets", microposts_path
-            %li 
-              = link_to "New Tweet", new_micropost_path
-            %li 
-              = link_to "Register", new_user_path
             %li
               = link_to "Users", users_path
-        / /.navbar-collapse
-      / /.container
-    / Page Content
+            - if current_user 
+              %li 
+                = link_to "New Tweet", new_micropost_path
+              %li
+                = link_to "Logout", logout_path
+            - else
+              %li 
+                = link_to "Register", new_user_path
+              %li 
+                = link_to "Login", login_path
     .container
       .row
         .col-lg-12.text-center
@@ -41,7 +41,5 @@
             .alert{class: "alert-#{key}"}
               = value
           = yield
-      / /.row
-    / /.container
     :css
       body{padding-top:70px;background-color:#e6e6e6;}.white{padding:20px;margin:20px auto; background-color:white;width:540px;}
