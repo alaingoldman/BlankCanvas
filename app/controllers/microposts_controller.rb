@@ -22,6 +22,30 @@ class MicropostsController < ApplicationController
   	@micropost = Micropost.find(params[:id])
   end
 
+
+  def edit
+    @micropost = Micropost.find(params[:id])
+  end
+
+  def update
+    @micropost = Micropost.find(params[:id])
+    if @micropost.update_attributes(permit_params)
+      flash[:success] = "Updated"
+      redirect_to micropost_path(@micropost)
+    else
+      flash[:danger] = @micropost.errors.full_messages.first
+      redirect_to edit_micropost_path(@micropost)
+    end
+  end
+
+
+  def destroy
+    @micropost = Micropost.find(params[:id])
+    @micropost.delete
+    flash[:success] = "Micropost Removed"
+    redirect_to root_url
+  end
+
   private
     def permit_params
     	params.require(:micropost).permit(:message, :email)

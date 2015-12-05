@@ -1,0 +1,13 @@
+%h1 Edit tweet
+
+= form_for @micropost do |f| 
+  = f.label :message
+  %br
+  = f.text_field :message, placeholder: "Message"
+  %br 
+  = f.label :email
+  %br
+  = f.text_field :email, placeholder: "johndoe@gmail.com"
+  %br 
+  %br 
+  = f.submit "Edit", class: "btn btn-danger"

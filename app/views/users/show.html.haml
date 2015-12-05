@@ -8,3 +8,9 @@ email:
 
 %br 
 = @user.created_at.to_date.to_formatted_s(:long_ordinal)
+
+%br
+%br
+
+= link_to "edit", edit_user_path(@user)
+= link_to "delete", user_path(@user), method: "delete", class: "text-danger"
