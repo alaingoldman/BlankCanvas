@@ -2,10 +2,14 @@
 
 To create this app run the git clone command in your terminal
 
-`git clone https://github.com/alaingoldman/BlankCanvas.git`
+```
+git clone https://github.com/alaingoldman/BlankCanvas.git
+```
 
 Things you may want to pay attention to:
 
 * How I setup sessions routes & session form
 
 * How I display the date Microposts were created 
+
+* How beautiful HAML is (lol)
