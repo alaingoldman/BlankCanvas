@@ -1,6 +1,8 @@
 == CLASS EXAMPLE
 
-Good luck
+To create this app run the git clone command in your terminal
+
+`git clone https://github.com/alaingoldman/BlankCanvas.git`
 
 Things you may want to pay attention to:
 
