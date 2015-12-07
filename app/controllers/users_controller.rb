@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_filter :check_for_admin, only: :warn
+    
   def new
   	@user = User.new
   end
@@ -44,6 +46,27 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
+  def warn
+    user = User.find(params[:id])
+    UserMailer.warning(user.email).deliver 
+    flash[:success] = "Person warned"
+    redirect_to root_url
+  end
+
+
+  def check_for_admin
+    if current_user
+      if current_user.admin
+      else
+        flash[:danger] = "Admin only"
+        redirect_to root_url
+      end
+    else
+      flash[:danger] = "Admin only"
+      redirect_to login_path
+    end
+  end
+  
   private
     def permit_params
     	params.require(:user).permit(:username,:password,:email)

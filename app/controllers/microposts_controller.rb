@@ -15,7 +15,11 @@ class MicropostsController < ApplicationController
   end
 
   def index
-  	@microposts = Micropost.all
+    if params[:search] != ""
+        @microposts = Micropost.where("message LIKE ?", "#{params[:search]}%")
+  	else 
+  	    @microposts = Micropost.all
+  	end
   end
 
   def show

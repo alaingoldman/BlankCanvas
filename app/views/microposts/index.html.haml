@@ -1,5 +1,13 @@
 %h1 All Tweets
 %hr
+
+= form_tag '/microposts', method: "get"
+= text_field_tag :search
+= submit_tag "Search"
+= link_to "clear", microposts_path
+%br
+%br
+
 - @microposts.each do |x| 
   = x.message 
   = link_to "show", micropost_path(x)

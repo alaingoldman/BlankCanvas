@@ -14,3 +14,8 @@ email:
 
 = link_to "edit", edit_user_path(@user)
 = link_to "delete", user_path(@user), method: "delete", class: "text-danger"
+
+%br
+- if current_user 
+  - if current_user.admin 
+    = link_to "Warn User", warn_path, class: "text-danger"
